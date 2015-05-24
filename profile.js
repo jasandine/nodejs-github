@@ -1,6 +1,5 @@
 var https = require("https");
 
-var login = "jasandine";
 
 function printMessage(login, public_repos) {
   var message = login + " has " + public_repos + " public repositories";
@@ -11,17 +10,16 @@ function printError(error){
   console.log(error.message);
 }
 
-
-
+function get(login) {
   var options = {
     hostname: "api.github.com",
     port: 443,
-    path: "/users/jasanddine",
+    path: '/users/' + login,
     headers: {'user-agent': 'node.js'},
     method: "GET"
   };
 
-  var req = https.request(options, function(res) {
+  var req = https.get(options, function(res) {
     var body = "";
 
     res.on('data', function(chunk) {
@@ -41,6 +39,8 @@ function printError(error){
       }
     });
   });
-req.end();
-req.on('error', printError);
 
+req.on('error', printError);
+}
+
+module.exports.get = get;
