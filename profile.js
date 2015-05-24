@@ -10,7 +10,7 @@ function printError(error){
   console.log(error.message);
 }
 
-function get(login) {
+function getUser(login) {
   var options = {
     hostname: "api.github.com",
     port: 443,
@@ -43,4 +43,4 @@ function get(login) {
 req.on('error', printError);
 }
 
-module.exports.get = get;
+module.exports.get = getUser;
