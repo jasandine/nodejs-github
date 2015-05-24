@@ -8,7 +8,7 @@ var options = {
   method: "GET"
 };
 
-// var login = "jasandine";
+var login = "jasandine";
 
 function printMessage(login, public_repos) {
   var message = login + " has " + public_repos + " public repositories";
@@ -24,7 +24,7 @@ var req = https.request(options, function(res) {
   });
   res.on('end', function (){
     var profile = JSON.parse(body);
-    printMessage(profile.login, profile.public_repos)
+    printMessage(profilelogin, profile.public_repos)
     console.dir(profile);
   });
 });
